@@ -1,0 +1,26 @@
+#include <stdio.h>
+
+int main() {
+    int a[50], i, j, n, c = 0;
+
+    printf("Enter number of bits: ");
+    scanf("%d", &n);
+    printf("Enter bits (0 or 1): ");
+    for(i = 0; i < n; i++) scanf("%d", &a[i]);
+
+    for(i = 0; i < n; i++) {
+        if(a[i] == 1) c++;
+        else c = 0;
+
+        if(c == 5) {
+            for(j = n; j > i; j--) a[j+1] = a[j];
+            a[i+1] = 0; n++; c = 0;
+        }
+    }
+
+    printf("DATA AFTER STUFFING: 01111110 ");
+    for(i = 0; i < n; i++) printf("%d", a[i]);
+    printf(" 01111110\n");
+
+    return 0;
+}
